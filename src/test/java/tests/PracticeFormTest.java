@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 
-import static com.codeborne.selenide.Condition.checked;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -18,7 +17,6 @@ public class PracticeFormTest {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.timeout = 5000; // default 4000
     }
 
     @Test
@@ -33,7 +31,7 @@ public class PracticeFormTest {
         $(byText("Female")).click();
         $(byText("Reading")).click();
 
-        //birth date
+        //date of birth
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOptionByValue(String.valueOf(7));
         $(".react-datepicker__year-select").selectOptionByValue(String.valueOf(1994));

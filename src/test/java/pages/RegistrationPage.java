@@ -8,7 +8,6 @@ import pages.components.FormComponent;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class RegistrationPage {
 
@@ -25,20 +24,16 @@ public class RegistrationPage {
             stateInput = $("#state"),
             stateCityWrapper = $("#stateCity-wrapper"),
             cityInput = $("#city"),
-            submitButton = $("#submit"),
-            modalDialog = $("modal-dialog"),
-            genderMale = $("#genterWrapper").$(byText("Male")),
-            genderFemale = $("#genterWrapper").$(byText("Male")),
-            genderOther = $("#genterWrapper").$(byText("Male"));
+            submitButton = $("#submit");
 
     CalendarComponent calendarComponent = new CalendarComponent();
     FormComponent formComponent = new FormComponent();
 
     public RegistrationPage openPage(){
         open("/automation-practice-form");
-        $(".practice-form-wrapper").shouldHave(text("Practice Form"));
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
+        $(".practice-form-wrapper").shouldHave(text("Practice Form"));
 
         return this;
     }

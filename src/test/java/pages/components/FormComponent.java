@@ -1,9 +1,9 @@
 package pages.components;
 
+import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Condition.appear;
 
 public class FormComponent {
     public void checkForm(String key, String value){

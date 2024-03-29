@@ -8,7 +8,6 @@ public class RandomUtils {
     static Faker faker = new Faker();
     private static Date date = faker.date().birthday();
 
-
     public static String getRandomFirstName(){
         String firstName = faker.name().firstName();
 
@@ -26,8 +25,7 @@ public class RandomUtils {
     }
     public static String getRandomGender(){
         String[] genders = {"Male", "Female", "Other"};
-        int genderIndex = faker.random().nextInt(genders.length);
-        String gender = genders[genderIndex];
+        String gender = faker.options().option(genders);
 
         return gender;
     }
@@ -64,17 +62,22 @@ public class RandomUtils {
         String[] subjects = {"English", "Chemistry", "Computer Science","Commerce",
                 "Economics", "Social Studies", "Arts", "History", "Biology", "Math",
                 "Accounting", "Physics", "Hindi", "Civics"};
-        int genderIndex = faker.random().nextInt(subjects.length);
-        String subject = subjects[genderIndex];
+        String subject = faker.options().option(subjects);
 
         return subject;
     }
     public static String getRandomHobby(){
         String[] hobbies = {"Sports", "Reading", "Music"};
-        int genderIndex = faker.random().nextInt(hobbies.length);
-        String hobby = hobbies[genderIndex];
+        String hobby = faker.options().option(hobbies);
 
         return hobby;
+    }
+    public static String getRandomPicture(){
+        String[] pictures = {"img.jpg", "img2.png", "img3.jpg",
+                            "img4.png"};
+        String picture = faker.options().option(pictures);
+
+        return picture;
     }
     public static String getRandomAddress(){
         String address = faker.address().streetAddress();
@@ -83,8 +86,7 @@ public class RandomUtils {
     }
     public static String getRandomState(){
         String[] states = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
-        int stateIndex = faker.random().nextInt(states.length);
-        String state = states[stateIndex];
+        String state = faker.options().option(states);
 
         return state;
     }
@@ -93,20 +95,16 @@ public class RandomUtils {
         String city;
         if (state == "NCR"){
             String cities[] = {"Delhi", "Gurgaon", "Noida"};
-            cityIndex = faker.random().nextInt(cities.length);
-            city = cities[cityIndex];
+            city = faker.options().option(cities);
         } else if (state == "Uttar Pradesh"){
             String cities[] = {"Agra", "Lucknow", "Merrut"};
-            cityIndex = faker.random().nextInt(cities.length);
-            city = cities[cityIndex];
+            city = faker.options().option(cities);
         } else if (state == "Haryana"){
             String cities[] = {"Karnal", "Panipat"};
-            cityIndex = faker.random().nextInt(cities.length);
-            city = cities[cityIndex];
+            city = faker.options().option(cities);
         } else {
             String cities[] = {"Jaipur", "Jaiselmer"};
-            cityIndex = faker.random().nextInt(cities.length);
-            city = cities[cityIndex];
+            city = faker.options().option(cities);
         }
 
         return city;

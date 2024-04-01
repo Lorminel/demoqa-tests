@@ -9,30 +9,25 @@ public class RandomUtils {
     private static Date date = faker.date().birthday();
 
     public static String getRandomFirstName(){
-        String firstName = faker.name().firstName();
 
-        return firstName;
+        return faker.name().firstName();
     }
     public static String getRandomLastName(){
-        String lastName = faker.name().lastName();
 
-        return lastName;
+        return faker.name().lastName();
     }
     public static String getRandomEmail(){
-        String email = faker.internet().emailAddress();
 
-        return email;
+        return faker.internet().emailAddress();
     }
     public static String getRandomGender(){
         String[] genders = {"Male", "Female", "Other"};
-        String gender = faker.options().option(genders);
 
-        return gender;
+        return faker.options().option(genders);
     }
     public static String getRandomPhoneNumber(){
-        String phoneNumber = faker.phoneNumber().subscriberNumber(10);
 
-        return phoneNumber;
+        return faker.phoneNumber().subscriberNumber(10);
     }
     public static String getRandomDay(){
        String day = String.valueOf(date.getDate());
@@ -46,68 +41,57 @@ public class RandomUtils {
         String[] months = {"January", "February", "March", "April", "May", "June",
                 "July", "August", "September", "October", "November", "December"};
         int monthIndex = date.getMonth();
-        String month = months[monthIndex];
 
-        return month;
+        return months[monthIndex];
     }
 
     public static String getRandomYear(){
-        String year = String.valueOf(date.getYear()+1900);
 
-        return year;
+        return String.valueOf(date.getYear()+1900);
     }
-
 
     public static String getRandomSubject(){
         String[] subjects = {"English", "Chemistry", "Computer Science","Commerce",
                 "Economics", "Social Studies", "Arts", "History", "Biology", "Math",
                 "Accounting", "Physics", "Hindi", "Civics"};
-        String subject = faker.options().option(subjects);
 
-        return subject;
+        return faker.options().option(subjects);
     }
     public static String getRandomHobby(){
         String[] hobbies = {"Sports", "Reading", "Music"};
-        String hobby = faker.options().option(hobbies);
 
-        return hobby;
+        return faker.options().option(hobbies);
     }
     public static String getRandomPicture(){
         String[] pictures = {"img.jpg", "img2.png", "img3.jpg",
                             "img4.png"};
-        String picture = faker.options().option(pictures);
 
-        return picture;
+        return faker.options().option(pictures);
     }
     public static String getRandomAddress(){
-        String address = faker.address().streetAddress();
 
-        return address;
+        return faker.address().streetAddress();
     }
     public static String getRandomState(){
         String[] states = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
-        String state = faker.options().option(states);
 
-        return state;
+        return faker.options().option(states);
     }
     public static String getRandomCity(String state){
-        int cityIndex;
-        String city;
+
         if (state == "NCR"){
             String cities[] = {"Delhi", "Gurgaon", "Noida"};
-            city = faker.options().option(cities);
+            return faker.options().option(cities);
         } else if (state == "Uttar Pradesh"){
             String cities[] = {"Agra", "Lucknow", "Merrut"};
-            city = faker.options().option(cities);
+            return faker.options().option(cities);
         } else if (state == "Haryana"){
             String cities[] = {"Karnal", "Panipat"};
-            city = faker.options().option(cities);
+            return faker.options().option(cities);
         } else {
             String cities[] = {"Jaipur", "Jaiselmer"};
-            city = faker.options().option(cities);
+            return faker.options().option(cities);
         }
-
-        return city;
     }
 
 

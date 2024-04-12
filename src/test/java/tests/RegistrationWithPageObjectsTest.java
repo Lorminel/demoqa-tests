@@ -1,5 +1,6 @@
 package tests;
 
+import data.FormKeys;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -35,16 +36,6 @@ public class RegistrationWithPageObjectsTest extends TestBase {
     state = getRandomState(),
     city = getRandomCity(state),
     stateAndCity = format("%s %s", state, city),
-    nameKey = "Student Name",
-    emailKey = "Student Email",
-    genderKey = "Gender",
-    mobileKey = "Mobile",
-    birthKey = "Date of Birth",
-    subjectsKey = "Subjects",
-    hobbiesKey = "Hobbies",
-    pictureKey = "Picture",
-    addressKey = "Address",
-    stateAndCityKey = "State and City",
     emptyField = " ";
 
     SimpleDateFormat formatter = new SimpleDateFormat("dd MMMM,yyyy", Locale.ENGLISH);
@@ -74,16 +65,16 @@ public class RegistrationWithPageObjectsTest extends TestBase {
                 .setCity(city)
                 .pressSubmit();
 
-        registrationPage.checkResult(nameKey, fullName)
-                .checkResult(emailKey, userEmail)
-                .checkResult(genderKey, userGender)
-                .checkResult(mobileKey, userNumber)
-                .checkResult(birthKey, birthDate)
-                .checkResult(subjectsKey, userSubject)
-                .checkResult(hobbiesKey, userHobby)
-                .checkResult(pictureKey, userPictureDisplayed)
-                .checkResult(addressKey, userAddress)
-                .checkResult(stateAndCityKey, stateAndCity);
+        registrationPage.checkResult(FormKeys.Name.getKey(), fullName)
+                .checkResult(FormKeys.Email.getKey(), userEmail)
+                .checkResult(FormKeys.Gender.getKey(), userGender)
+                .checkResult(FormKeys.Mobile.getKey(), userNumber)
+                .checkResult(FormKeys.Birth.getKey(), birthDate)
+                .checkResult(FormKeys.Subject.getKey(), userSubject)
+                .checkResult(FormKeys.Hobby.getKey(), userHobby)
+                .checkResult(FormKeys.Picture.getKey(), userPictureDisplayed)
+                .checkResult(FormKeys.Address.getKey(), userAddress)
+                .checkResult(FormKeys.StateAndCity.getKey(), stateAndCity);
 
     }
 
@@ -102,16 +93,16 @@ public class RegistrationWithPageObjectsTest extends TestBase {
                 .setUserNumber(userNumber)
                 .pressSubmit();
 
-        registrationPage.checkResult(nameKey, fullName)
-                .checkResult(emailKey, emptyField)
-                .checkResult(genderKey, userGender)
-                .checkResult(mobileKey, userNumber)
-                .checkResult(birthKey, currentDate)
-                .checkResult(subjectsKey, emptyField)
-                .checkResult(hobbiesKey, emptyField)
-                .checkResult(pictureKey, emptyField)
-                .checkResult(addressKey, emptyField)
-                .checkResult(stateAndCityKey, emptyField);
+        registrationPage.checkResult(FormKeys.Name.getKey(), fullName)
+                .checkResult(FormKeys.Email.getKey(), emptyField)
+                .checkResult(FormKeys.Gender.getKey(), userGender)
+                .checkResult(FormKeys.Mobile.getKey(), userNumber)
+                .checkResult(FormKeys.Birth.getKey(), currentDate)
+                .checkResult(FormKeys.Subject.getKey(), emptyField)
+                .checkResult(FormKeys.Hobby.getKey(), emptyField)
+                .checkResult(FormKeys.Picture.getKey(), emptyField)
+                .checkResult(FormKeys.Address.getKey(), emptyField)
+                .checkResult(FormKeys.StateAndCity.getKey(), emptyField);
 
     }
 

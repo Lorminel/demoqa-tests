@@ -29,11 +29,15 @@ repositories {
 }
 
 
+compileJava {
+    options.encoding = 'UTF-8'
+}
 compileTestJava {
     options.encoding = 'UTF-8'
 }
 
 dependencies {
+    runtimeOnly 'org.aspectj:aspectjweaver:1.9.22'
     testImplementation(
             "com.codeborne:selenide:$selenideVersion",
             "io.qameta.allure:allure-selenide:$allureVersion",
@@ -54,14 +58,14 @@ tasks.withType(Test) {
     }
 }
 
-task registration_tests(type: Test) {
+task registration(type: Test) {
     useJUnitPlatform {
-        includeTags("registration tests")
+        includeTags("registration test")
     }
 }
 
-task negative_test(type: Test) {
+task negative(type: Test) {
     useJUnitPlatform {
-        includeTags("negative")
+        includeTags("negative test")
     }
 }

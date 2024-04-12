@@ -2,6 +2,8 @@ package tests;
 
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
@@ -54,6 +56,7 @@ public class RegistrationWithPageObjectsTest extends TestBase {
     @Owner("dtsvetkova")
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Отправка формы со всеми заполненными полями")
+    @Tag("registration test")
     @Test
     void successfulFillFormTest() {
         registrationPage.openPage()
@@ -89,6 +92,7 @@ public class RegistrationWithPageObjectsTest extends TestBase {
     @Owner("dtsvetkova")
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Отправка формы с обязательными заполненными полями")
+    @Tag("registration test")
     @Test
     void minSuccessfulFillFormTest(){
         registrationPage.openPage()
@@ -116,6 +120,10 @@ public class RegistrationWithPageObjectsTest extends TestBase {
     @Owner("dtsvetkova")
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Отправка формы без ввода имени пользователя")
+    @Tags({
+            @Tag("registration test"),
+            @Tag("negative test")
+    })
     @Test
     void emptyFirstNameTest(){
         registrationPage.openPage()
@@ -133,6 +141,10 @@ public class RegistrationWithPageObjectsTest extends TestBase {
     @Owner("dtsvetkova")
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Отправка формы без выбора пола пользователя")
+    @Tags({
+            @Tag("registration test"),
+            @Tag("negative test")
+    })
     @Test
     void emptyGenderTest(){
         registrationPage.openPage()

@@ -8,36 +8,42 @@ public class RandomUtils {
     static Faker faker = new Faker();
     private static Date date = faker.date().birthday();
 
-    public static String getRandomFirstName(){
+    public static String getRandomFirstName() {
 
         return faker.name().firstName();
     }
-    public static String getRandomLastName(){
+
+    public static String getRandomLastName() {
 
         return faker.name().lastName();
     }
-    public static String getRandomEmail(){
+
+    public static String getRandomEmail() {
 
         return faker.internet().emailAddress();
     }
-    public static String getRandomGender(){
+
+    public static String getRandomGender() {
         String[] genders = {"Male", "Female", "Other"};
 
         return faker.options().option(genders);
     }
-    public static String getRandomPhoneNumber(){
+
+    public static String getRandomPhoneNumber() {
 
         return faker.phoneNumber().subscriberNumber(10);
     }
-    public static String getRandomDay(){
-       String day = String.valueOf(date.getDate());
-       if(day.length() < 2){
-           return "0"+day;
-       } else{
-           return day;
-       }
+
+    public static String getRandomDay() {
+        String day = String.valueOf(date.getDate());
+        if (day.length() < 2) {
+            return "0" + day;
+        } else {
+            return day;
+        }
     }
-    public static String getRandomMonth(){
+
+    public static String getRandomMonth() {
         String[] months = {"January", "February", "March", "April", "May", "June",
                 "July", "August", "September", "October", "November", "December"};
         int monthIndex = date.getMonth();
@@ -45,47 +51,52 @@ public class RandomUtils {
         return months[monthIndex];
     }
 
-    public static String getRandomYear(){
+    public static String getRandomYear() {
 
-        return String.valueOf(date.getYear()+1900);
+        return String.valueOf(date.getYear() + 1900);
     }
 
-    public static String getRandomSubject(){
-        String[] subjects = {"English", "Chemistry", "Computer Science","Commerce",
+    public static String getRandomSubject() {
+        String[] subjects = {"English", "Chemistry", "Computer Science", "Commerce",
                 "Economics", "Social Studies", "Arts", "History", "Biology", "Math",
                 "Accounting", "Physics", "Hindi", "Civics"};
 
         return faker.options().option(subjects);
     }
-    public static String getRandomHobby(){
+
+    public static String getRandomHobby() {
         String[] hobbies = {"Sports", "Reading", "Music"};
 
         return faker.options().option(hobbies);
     }
-    public static String getRandomPicture(){
+
+    public static String getRandomPicture() {
         String[] pictures = {"img.jpg", "img2.png", "img3.jpg",
-                            "img4.png"};
+                "img4.png"};
 
         return faker.options().option(pictures);
     }
-    public static String getRandomAddress(){
+
+    public static String getRandomAddress() {
 
         return faker.address().streetAddress();
     }
-    public static String getRandomState(){
+
+    public static String getRandomState() {
         String[] states = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
 
         return faker.options().option(states);
     }
-    public static String getRandomCity(String state){
 
-        if (state == "NCR"){
+    public static String getRandomCity(String state) {
+
+        if (state == "NCR") {
             String cities[] = {"Delhi", "Gurgaon", "Noida"};
             return faker.options().option(cities);
-        } else if (state == "Uttar Pradesh"){
+        } else if (state == "Uttar Pradesh") {
             String cities[] = {"Agra", "Lucknow", "Merrut"};
             return faker.options().option(cities);
-        } else if (state == "Haryana"){
+        } else if (state == "Haryana") {
             String cities[] = {"Karnal", "Panipat"};
             return faker.options().option(cities);
         } else {
@@ -93,8 +104,6 @@ public class RandomUtils {
             return faker.options().option(cities);
         }
     }
-
-
 
 
 }

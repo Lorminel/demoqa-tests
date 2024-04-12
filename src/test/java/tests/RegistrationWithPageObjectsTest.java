@@ -19,24 +19,24 @@ public class RegistrationWithPageObjectsTest extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
     String firstName = getRandomFirstName(),
-    lastName = getRandomLastName(),
-    fullName = format("%s %s", firstName, lastName),
-    userEmail = getRandomEmail(),
-    userGender = getRandomGender(),
-    userNumber = getRandomPhoneNumber(),
-    birthDay = getRandomDay(),
-    birthMonth = getRandomMonth(),
-    birthYear = getRandomYear(),
-    birthDate = format("%s %s,%s", birthDay, birthMonth, birthYear),
-    userSubject = getRandomSubject(),
-    userHobby = getRandomHobby(),
-    userPictureDisplayed = getRandomPicture(),
-    userPictureUpload = "images/" + userPictureDisplayed,
-    userAddress = getRandomAddress(),
-    state = getRandomState(),
-    city = getRandomCity(state),
-    stateAndCity = format("%s %s", state, city),
-    emptyField = " ";
+            lastName = getRandomLastName(),
+            fullName = format("%s %s", firstName, lastName),
+            userEmail = getRandomEmail(),
+            userGender = getRandomGender(),
+            userNumber = getRandomPhoneNumber(),
+            birthDay = getRandomDay(),
+            birthMonth = getRandomMonth(),
+            birthYear = getRandomYear(),
+            birthDate = format("%s %s,%s", birthDay, birthMonth, birthYear),
+            userSubject = getRandomSubject(),
+            userHobby = getRandomHobby(),
+            userPictureDisplayed = getRandomPicture(),
+            userPictureUpload = "images/" + userPictureDisplayed,
+            userAddress = getRandomAddress(),
+            state = getRandomState(),
+            city = getRandomCity(state),
+            stateAndCity = format("%s %s", state, city),
+            emptyField = " ";
 
     SimpleDateFormat formatter = new SimpleDateFormat("dd MMMM,yyyy", Locale.ENGLISH);
     Date Date = new Date();
@@ -85,7 +85,7 @@ public class RegistrationWithPageObjectsTest extends TestBase {
     @DisplayName("Отправка формы с обязательными заполненными полями")
     @Tag("registration")
     @Test
-    void minSuccessfulFillFormTest(){
+    void minSuccessfulFillFormTest() {
         registrationPage.openPage()
                 .setFirstName(firstName)
                 .setLastName(lastName)
@@ -116,7 +116,7 @@ public class RegistrationWithPageObjectsTest extends TestBase {
             @Tag("negative")
     })
     @Test
-    void emptyFirstNameTest(){
+    void emptyFirstNameTest() {
         registrationPage.openPage()
                 .setLastName(lastName)
                 .setGender(userGender)
@@ -137,7 +137,7 @@ public class RegistrationWithPageObjectsTest extends TestBase {
             @Tag("negative")
     })
     @Test
-    void emptyGenderTest(){
+    void emptyGenderTest() {
         registrationPage.openPage()
                 .setFirstName(firstName)
                 .setLastName(lastName)

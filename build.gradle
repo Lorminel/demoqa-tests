@@ -7,7 +7,7 @@ group = 'com.lorminel22'
 version = '1.0-SNAPSHOT'
 
 def allureVersion = "2.27.0",
-     selenideVersion = "7.2.3"
+    selenideVersion = "7.2.3"
 
 allure {
     report {

@@ -1,5 +1,7 @@
 package tests;
 
+import io.qameta.allure.*;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
@@ -47,7 +49,11 @@ public class RegistrationWithPageObjectsTest extends TestBase {
     Date Date = new Date();
     String currentDate = formatter.format(Date);
 
-
+    @Feature("Форма регистрации")
+    @Story("Заполнение формы")
+    @Owner("dtsvetkova")
+    @Severity(SeverityLevel.BLOCKER)
+    @DisplayName("Отправка формы со всеми заполненными полями")
     @Test
     void successfulFillFormTest() {
         registrationPage.openPage()
@@ -78,6 +84,11 @@ public class RegistrationWithPageObjectsTest extends TestBase {
 
     }
 
+    @Feature("Форма регистрации")
+    @Story("Заполнение формы")
+    @Owner("dtsvetkova")
+    @Severity(SeverityLevel.BLOCKER)
+    @DisplayName("Отправка формы с обязательными заполненными полями")
     @Test
     void minSuccessfulFillFormTest(){
         registrationPage.openPage()
@@ -100,6 +111,11 @@ public class RegistrationWithPageObjectsTest extends TestBase {
 
     }
 
+    @Feature("Форма регистрации")
+    @Story("Заполнение формы")
+    @Owner("dtsvetkova")
+    @Severity(SeverityLevel.BLOCKER)
+    @DisplayName("Отправка формы без ввода имени пользователя")
     @Test
     void emptyFirstNameTest(){
         registrationPage.openPage()
@@ -112,6 +128,11 @@ public class RegistrationWithPageObjectsTest extends TestBase {
                 .checkEmptyFirstName();
     }
 
+    @Feature("Форма регистрации")
+    @Story("Заполнение формы")
+    @Owner("dtsvetkova")
+    @Severity(SeverityLevel.BLOCKER)
+    @DisplayName("Отправка формы без выбора пола пользователя")
     @Test
     void emptyGenderTest(){
         registrationPage.openPage()

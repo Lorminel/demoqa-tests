@@ -40,42 +40,42 @@ public class RegistrationPage {
         return this;
     }
 
-    @Step("Вввести имя пользователя")
+    @Step("Вввести имя пользователя {value}")
     public RegistrationPage setFirstName(String value) {
         firstNameInput.setValue(value);
 
         return this;
     }
 
-    @Step("Вввести фамилию пользователя")
+    @Step("Вввести фамилию пользователя {value}")
     public RegistrationPage setLastName(String value) {
         lastNameInput.setValue(value);
 
         return this;
     }
 
-    @Step("Вввести email")
+    @Step("Вввести email {value}")
     public RegistrationPage setEmail(String value) {
         emailInput.setValue(value);
 
         return this;
     }
 
-    @Step("Выбрать пол")
+    @Step("Выбрать пол {value}")
     public RegistrationPage setGender(String value) {
         genderWrapper.$(byText(value)).click();
 
         return this;
     }
 
-    @Step("Ввести номер телефона")
+    @Step("Ввести номер телефона {value}")
     public RegistrationPage setUserNumber(String value) {
         userNumberInput.setValue(value);
 
         return this;
     }
 
-    @Step("Установить дату рождения")
+    @Step("Установить дату рождения {day}.{month}.{year}")
     public RegistrationPage setBirthDate(String day, String month, String year) {
         calendarInput.click();
         calendarComponent.setDate(day, month, year);
@@ -83,7 +83,7 @@ public class RegistrationPage {
         return this;
     }
 
-    @Step("Выбрать предмет")
+    @Step("Выбрать предмет {value}")
     public RegistrationPage setSubject(String value) {
 
         subjectsInput.setValue(value).pressEnter();
@@ -91,7 +91,7 @@ public class RegistrationPage {
         return this;
     }
 
-    @Step("Выбрать хобби")
+    @Step("Выбрать хобби {value}")
     public RegistrationPage setHobby(String value) {
 
         hobbiesWrapper.$(byText(value)).click();
@@ -99,7 +99,7 @@ public class RegistrationPage {
         return this;
     }
 
-    @Step("Загрузить изображение")
+    @Step("Загрузить изображение {value}")
     public RegistrationPage uploadPicture(String value) {
 
         uploadPicture.uploadFromClasspath(value);
@@ -107,7 +107,7 @@ public class RegistrationPage {
         return this;
     }
 
-    @Step("Ввести адрес")
+    @Step("Ввести адрес {value}")
     public RegistrationPage setAddress(String value) {
 
         addressInput.setValue(value);
@@ -115,7 +115,7 @@ public class RegistrationPage {
         return this;
     }
 
-    @Step("Выбрать штат")
+    @Step("Выбрать штат {value}")
     public RegistrationPage setState(String value) {
 
         stateInput.click();
@@ -124,7 +124,7 @@ public class RegistrationPage {
         return this;
     }
 
-    @Step("Выбрать город")
+    @Step("Выбрать город {value}")
     public RegistrationPage setCity(String value) {
 
         cityInput.click();
@@ -141,7 +141,7 @@ public class RegistrationPage {
         return this;
     }
 
-    @Step("Проверить, что введенные данные отображаются в форме")
+    @Step("Проверить, что введенные данные {value} отображаются в графе {key}")
     public RegistrationPage checkResult(String key, String value) {
 
         formComponent.checkForm(key, value);

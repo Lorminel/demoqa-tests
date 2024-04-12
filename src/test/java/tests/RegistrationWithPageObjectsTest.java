@@ -56,7 +56,7 @@ public class RegistrationWithPageObjectsTest extends TestBase {
     @Owner("dtsvetkova")
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Отправка формы со всеми заполненными полями")
-    @Tag("registration test")
+    @Tag("registration")
     @Test
     void successfulFillFormTest() {
         registrationPage.openPage()
@@ -92,7 +92,7 @@ public class RegistrationWithPageObjectsTest extends TestBase {
     @Owner("dtsvetkova")
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Отправка формы с обязательными заполненными полями")
-    @Tag("registration test")
+    @Tag("registration")
     @Test
     void minSuccessfulFillFormTest(){
         registrationPage.openPage()
@@ -121,8 +121,8 @@ public class RegistrationWithPageObjectsTest extends TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Отправка формы без ввода имени пользователя")
     @Tags({
-            @Tag("registration test"),
-            @Tag("negative test")
+            @Tag("registration"),
+            @Tag("negative")
     })
     @Test
     void emptyFirstNameTest(){
@@ -142,8 +142,8 @@ public class RegistrationWithPageObjectsTest extends TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Отправка формы без выбора пола пользователя")
     @Tags({
-            @Tag("registration test"),
-            @Tag("negative test")
+            @Tag("registration"),
+            @Tag("negative")
     })
     @Test
     void emptyGenderTest(){

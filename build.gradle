@@ -58,14 +58,14 @@ tasks.withType(Test) {
     }
 }
 
-task registration(type: Test) {
+task registration_tests(type: Test) {
     useJUnitPlatform {
-        includeTags("registration test")
+        includeTags("registration")
     }
 }
 
-task negative(type: Test) {
+task negative_tests(type: Test) {
     useJUnitPlatform {
-        includeTags("negative test")
+        includeTags("negative")
     }
 }

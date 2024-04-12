@@ -2,6 +2,7 @@ package pages;
 
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import pages.components.CalendarComponent;
 import pages.components.FormComponent;
 
@@ -11,7 +12,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationPage {
 
-    private SelenideElement firstNameInput = $("#firstName"),
+    private final SelenideElement firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             emailInput = $("#userEmail"),
             genderWrapper = $("#genterWrapper"),
@@ -29,7 +30,8 @@ public class RegistrationPage {
     CalendarComponent calendarComponent = new CalendarComponent();
     FormComponent formComponent = new FormComponent();
 
-    public RegistrationPage openPage(){
+    @Step("Открыть страницу регистрационной формы")
+    public RegistrationPage openPage() {
         open("/automation-practice-form");
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
@@ -38,91 +40,124 @@ public class RegistrationPage {
         return this;
     }
 
+    @Step("Вввести имя пользователя")
     public RegistrationPage setFirstName(String value) {
         firstNameInput.setValue(value);
 
         return this;
     }
+
+    @Step("Вввести фамилию пользователя")
     public RegistrationPage setLastName(String value) {
         lastNameInput.setValue(value);
 
         return this;
     }
+
+    @Step("Вввести email")
     public RegistrationPage setEmail(String value) {
         emailInput.setValue(value);
 
         return this;
     }
+
+    @Step("Выбрать пол")
     public RegistrationPage setGender(String value) {
         genderWrapper.$(byText(value)).click();
 
         return this;
     }
+
+    @Step("Ввести номер телефона")
     public RegistrationPage setUserNumber(String value) {
         userNumberInput.setValue(value);
 
         return this;
     }
+
+    @Step("Установить дату рождения")
     public RegistrationPage setBirthDate(String day, String month, String year) {
         calendarInput.click();
         calendarComponent.setDate(day, month, year);
 
         return this;
     }
+
+    @Step("Выбрать предмет")
     public RegistrationPage setSubject(String value) {
 
         subjectsInput.setValue(value).pressEnter();
 
         return this;
     }
+
+    @Step("Выбрать хобби")
     public RegistrationPage setHobby(String value) {
 
         hobbiesWrapper.$(byText(value)).click();
 
         return this;
     }
+
+    @Step("Загрузить изображение")
     public RegistrationPage uploadPicture(String value) {
 
         uploadPicture.uploadFromClasspath(value);
 
         return this;
     }
+
+    @Step("Ввести адрес")
     public RegistrationPage setAddress(String value) {
 
         addressInput.setValue(value);
 
         return this;
     }
+
+    @Step("Выбрать штат")
     public RegistrationPage setState(String value) {
 
         stateInput.click();
         stateCityWrapper.$(byText(value)).click();
 
         return this;
-    }   public RegistrationPage setCity(String value) {
+    }
+
+    @Step("Выбрать город")
+    public RegistrationPage setCity(String value) {
 
         cityInput.click();
         stateCityWrapper.$(byText(value)).click();
 
         return this;
     }
+
+    @Step("Нажать на кнопку Submit")
     public RegistrationPage pressSubmit() {
 
         submitButton.click();
 
         return this;
     }
-    public RegistrationPage checkResult(String key, String value){
+
+    @Step("Проверить, что введенные данные отображаются в форме")
+    public RegistrationPage checkResult(String key, String value) {
 
         formComponent.checkForm(key, value);
 
         return this;
-    } public RegistrationPage checkFormNotDisplayed(){
+    }
+
+    @Step("Проверить, что форма не появляется")
+    public RegistrationPage checkFormNotDisplayed() {
 
         formComponent.formDoesNotAppear();
 
         return this;
     }
+
+    @Step("Проверить, что поле имени пустое и подсвечено красным")
     public RegistrationPage checkEmptyFirstName() {
         firstNameInput.shouldBe(empty);
         firstNameInput.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
@@ -134,7 +169,9 @@ public class RegistrationPage {
 
         return this;
     }
-    public RegistrationPage checkEmptyGender(){
+
+    @Step("Проверить, что пол не заполнен и кнопки подсвечены красным")
+    public RegistrationPage checkEmptyGender() {
 
         genderWrapper.$(byText("Male")).
                 shouldHave(cssValue("color", "rgba(220, 53, 69, 1)"));

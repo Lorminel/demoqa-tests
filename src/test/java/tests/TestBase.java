@@ -28,8 +28,8 @@ public class TestBase {
         Configuration.browserSize = properties.getBrowser_size();
         Configuration.browserVersion = properties.getBrowser_version();
         Configuration.pageLoadStrategy = "eager";
-//        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-        Configuration.remote = properties.getRwdriver();
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+//        Configuration.remote = properties.getRwdriver();
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(

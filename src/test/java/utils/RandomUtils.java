@@ -71,6 +71,7 @@ public class RandomUtils {
     }
 
     public static String getRandomPicture() {
+
         String[] pictures = {"img.jpg", "img2.png", "img3.jpg",
                 "img4.png"};
 

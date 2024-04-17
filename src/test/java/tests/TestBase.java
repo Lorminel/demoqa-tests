@@ -1,6 +1,7 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import helpers.Attach;
 import io.qameta.allure.Step;
@@ -15,19 +16,17 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class TestBase {
 
-//    private static String browser_size = System.getProperty("browser_size", "1920x1080");
-
     @Step("Открыть страницу https://demoqa.com в разрешении 1920x1080")
     @BeforeAll
     static void beforeAll() {
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browser = System.getProperty("browser", "firefox");
 //        Configuration.browserSize = "1920x1080";
         Configuration.browserSize = System.getProperty("browser_size", "1920x1080");
         Configuration.browserVersion = System.getProperty("browser_version", "120.0");
         Configuration.pageLoadStrategy = "eager";
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-//        Configuration.remote = properties.getRwdriver();
+        Configuration.remote = System.getProperty("remoteURL",
+                "https://user1:1234@selenoid.autotests.cloud/wd/hub");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
@@ -42,7 +41,9 @@ public class TestBase {
     void afterEach() {
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
-        Attach.browserConsoleLogs();
+        if (!WebDriverRunner.isFirefox()) {
+            Attach.browserConsoleLogs();
+        }
         Attach.addVideo();
         closeWebDriver();
     }

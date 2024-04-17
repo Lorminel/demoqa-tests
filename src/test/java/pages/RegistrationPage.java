@@ -2,6 +2,7 @@ package pages;
 
 
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
 import pages.components.CalendarComponent;
 import pages.components.FormComponent;
@@ -88,6 +89,7 @@ public class RegistrationPage {
 
         subjectsInput.setValue(value).pressEnter();
 
+
         return this;
     }
 
@@ -173,12 +175,23 @@ public class RegistrationPage {
     @Step("Проверить, что пол не заполнен и кнопки подсвечены красным")
     public RegistrationPage checkEmptyGender() {
 
-        genderWrapper.$(byText("Male")).
-                shouldHave(cssValue("color", "rgba(220, 53, 69, 1)"));
-        genderWrapper.$(byText("Female")).
-                shouldHave(cssValue("color", "rgba(220, 53, 69, 1)"));
-        genderWrapper.$(byText("Other")).
-                shouldHave(cssValue("color", "rgba(220, 53, 69, 1)"));
+        if (WebDriverRunner.isFirefox()) {
+            genderWrapper.$(byText("Male")).
+                    shouldHave(cssValue("color", "rgb(220, 53, 69)"));
+            genderWrapper.$(byText("Female")).
+                    shouldHave(cssValue("color", "rgb(220, 53, 69)"));
+            genderWrapper.$(byText("Other")).
+                    shouldHave(cssValue("color", "rgb(220, 53, 69)"));
+
+        } else {
+            genderWrapper.$(byText("Male")).
+                    shouldHave(cssValue("color", "rgba(220, 53, 69, 1)"));
+            genderWrapper.$(byText("Female")).
+                    shouldHave(cssValue("color", "rgba(220, 53, 69, 1)"));
+            genderWrapper.$(byText("Other")).
+                    shouldHave(cssValue("color", "rgba(220, 53, 69, 1)"));
+        }
+
 
         return this;
     }

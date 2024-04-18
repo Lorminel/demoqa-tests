@@ -3,6 +3,7 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import com.codeborne.selenide.webdriver.DriverFactory;
 import helpers.Attach;
 import io.qameta.allure.Step;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -24,9 +25,8 @@ public class TestBase {
         Configuration.browserSize = System.getProperty("browser_size", "1920x1080");
         Configuration.browserVersion = System.getProperty("browser_version", "122.0");
         Configuration.pageLoadStrategy = "eager";
-        Configuration.remote = System.getProperty("remoteURL",
-                "https://user1:1234@selenoid.autotests.cloud/wd/hub");
-
+        Configuration.remote = "https://user1:1234@" + System.getProperty("remoteURL",
+                "selenoid.autotests.cloud") + "/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(

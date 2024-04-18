@@ -43,7 +43,7 @@ public class TestBase {
     void afterEach() {
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
-        if (WebDriverRunner.isFirefox()) {
+        if (!WebDriverRunner.isFirefox()) {
             Attach.browserConsoleLogs();
         }
         Attach.addVideo();

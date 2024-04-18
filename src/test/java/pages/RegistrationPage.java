@@ -112,9 +112,9 @@ public class RegistrationPage {
 
         uploadPicture.shouldBe(clickable);
 
-        File file = new File(value);
+        File file = new File("/home/jenkins/workspace/26-Lorminel-jenkinsDemoqa_hw/"+value);
         File file1 = new File(file.getAbsolutePath());
-        uploadPicture.uploadFile(file1);
+        uploadPicture.uploadFile(file);
 //        uploadPicture.uploadFromClasspath(value);
 //        LocalFileDetector detector = new LocalFileDetector();
 //        File localFile = detector.getLocalFile(value);

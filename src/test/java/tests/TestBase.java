@@ -15,15 +15,15 @@ import java.util.Map;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class TestBase {
-
     @Step("Открыть страницу https://demoqa.com в разрешении 1920x1080")
     @BeforeAll
     static void beforeAll() {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browser = System.getProperty("browser", "firefox");
+
 //        Configuration.browserSize = "1920x1080";
         Configuration.browserSize = System.getProperty("browser_size", "1920x1080");
-        Configuration.browserVersion = System.getProperty("browser_version", "120.0");
+        Configuration.browserVersion = System.getProperty("browser_version", "122.0");
         Configuration.pageLoadStrategy = "eager";
         Configuration.remote = System.getProperty("remoteURL",
                 "https://user1:1234@selenoid.autotests.cloud/wd/hub");
@@ -35,13 +35,15 @@ public class TestBase {
         ));
         Configuration.browserCapabilities = capabilities;
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+
+
     }
 
     @AfterEach
     void afterEach() {
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
-        if (!WebDriverRunner.isFirefox()) {
+        if (WebDriverRunner.isFirefox()) {
             Attach.browserConsoleLogs();
         }
         Attach.addVideo();

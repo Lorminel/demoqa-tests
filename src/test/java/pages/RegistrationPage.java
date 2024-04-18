@@ -4,8 +4,14 @@ package pages;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.LocalFileDetector;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.remote.RemoteWebElement;
 import pages.components.CalendarComponent;
 import pages.components.FormComponent;
+
+import java.io.File;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
@@ -104,8 +110,16 @@ public class RegistrationPage {
     @Step("Загрузить изображение {value}")
     public RegistrationPage uploadPicture(String value) {
 
-        uploadPicture.uploadFromClasspath(value);
+        uploadPicture.shouldBe(clickable);
 
+        File file = new File(value);
+        File file1 = new File(file.getAbsolutePath());
+        uploadPicture.uploadFile(file1);
+//        uploadPicture.uploadFromClasspath(value);
+//        LocalFileDetector detector = new LocalFileDetector();
+//        File localFile = detector.getLocalFile(value);
+//        String absolutePath = localFile.getAbsolutePath();
+//        uploadPicture.sendKeys(absolutePath);
         return this;
     }
 

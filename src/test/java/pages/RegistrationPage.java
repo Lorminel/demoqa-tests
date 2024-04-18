@@ -112,7 +112,7 @@ public class RegistrationPage {
 
         uploadPicture.shouldBe(clickable);
 
-        File file = new File("/home/jenkins/workspace/26-Lorminel-jenkinsDemoqa_hw/"+value);
+        File file = new File("/home/jenkins/workspace/26-Lorminel-jenkinsDemoqa_hw/src/test/resources/images/img4.png");
         File file1 = new File(file.getAbsolutePath());
         uploadPicture.uploadFile(file);
 //        uploadPicture.uploadFromClasspath(value);

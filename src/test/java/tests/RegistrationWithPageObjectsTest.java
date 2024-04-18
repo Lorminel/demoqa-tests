@@ -1,5 +1,6 @@
 package tests;
 
+import com.codeborne.selenide.WebDriverRunner;
 import data.FormKeys;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
@@ -58,9 +59,14 @@ public class RegistrationWithPageObjectsTest extends TestBase {
                 .setUserNumber(userNumber)
                 .setBirthDate(birthDay, birthMonth, birthYear)
                 .setSubject(userSubject)
-                .setHobby(userHobby)
-                .uploadPicture(userPictureUpload)
-                .setAddress(userAddress)
+                .setHobby(userHobby);
+        if (WebDriverRunner.isChrome()) {
+            registrationPage.uploadPicture(userPictureUpload);
+        } else {
+            userPictureUpload = emptyField;
+            userPictureDisplayed = emptyField;
+        }
+        registrationPage.setAddress(userAddress)
                 .setState(state)
                 .setCity(city)
                 .pressSubmit();

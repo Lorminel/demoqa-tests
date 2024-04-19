@@ -17,16 +17,21 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class TestBase {
 
+    static String browser = System.getProperty("browser", "firefox");
+   static String browser_version = System.getProperty("browser_version", "122.0");
+   static String browser_size = System.getProperty("browser_Size", "1920x1080");
+   static String remoteURL = System.getProperty("remoteURL",
+           "selenoid.autotests.cloud");
+
     @Step("Открыть страницу https://demoqa.com в разрешении 1920x1080")
     @BeforeAll
     static void beforeAll() {
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browser = System.getProperty("browser", "firefox");
-        Configuration.browserSize = System.getProperty("browser_size", "1920x1080");
-        Configuration.browserVersion = System.getProperty("browser_version", "122.0");
+        Configuration.browser = browser;
+        Configuration.browserSize = browser_size;
+        Configuration.browserVersion = browser_version;
         Configuration.pageLoadStrategy = "eager";
-        Configuration.remote = "https://user1:1234@" + System.getProperty("remoteURL",
-                "selenoid.autotests.cloud") + "/wd/hub";
+        Configuration.remote = "https://user1:1234@" + remoteURL + "/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(

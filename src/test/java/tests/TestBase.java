@@ -24,7 +24,7 @@ public class TestBase {
         Configuration.browserSize = System.getProperty("browser_size", "1920x1080");
         Configuration.browserVersion = System.getProperty("browser_version", "122.0");
         Configuration.pageLoadStrategy = "eager";
-        Configuration.remote = "https://user1:1234@" + System.getProperty("remote_URL",
+        Configuration.remote = "https://user1:1234@" + System.getProperty("remote_url",
                 "selenoid.autotests.cloud") + "/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();

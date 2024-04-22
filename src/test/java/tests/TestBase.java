@@ -21,7 +21,7 @@ public class TestBase {
     static void beforeAll() {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browser = System.getProperty("browser", "firefox");
-        Configuration.browserSize = System.getProperty("browser_Size", "1920x1080");
+        Configuration.browserSize = System.getProperty("browser_size", "1920x1080");
         Configuration.browserVersion = System.getProperty("browser_version", "122.0");
         Configuration.pageLoadStrategy = "eager";
         Configuration.remote = "https://user1:1234@" + System.getProperty("remote_URL",
